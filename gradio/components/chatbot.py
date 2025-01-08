@@ -76,6 +76,7 @@ class ChatbotDataTuples(GradioRootModel):
         tuple[
             Union[str, FileMessage, ComponentMessage, None],
             Union[str, FileMessage, ComponentMessage, None],
+            Union[str, FileMessage, ComponentMessage, None],
         ]
     ]
 
@@ -365,11 +366,11 @@ class Chatbot(Component):
                     "Data incompatible with messages format. Each message should be a dictionary with 'role' and 'content' keys or a ChatMessage object."
                 )
         elif not all(
-            isinstance(message, (tuple, list)) and len(message) == 2
+            isinstance(message, (tuple, list)) and len(message) == 3
             for message in messages
         ):
             raise Error(
-                "Data incompatible with tuples format. Each message should be a list of length 2."
+                "Data incompatible with tuples format. Each message should be a list of length 3."
             )
 
     def _preprocess_content(
@@ -521,6 +522,7 @@ class Chatbot(Component):
                 [
                     self._postprocess_content(message_pair[0]),
                     self._postprocess_content(message_pair[1]),
+                    self._postprocess_content(message_pair[2]),
                 ]
             )
         return ChatbotDataTuples(root=processed_messages)
