@@ -420,14 +420,15 @@ class Chatbot(Component):
                 raise TypeError(
                     f"Expected a list of lists or list of tuples. Received: {message_pair}"
                 )
-            if len(message_pair) != 2:
+            if len(message_pair) != 3:
                 raise TypeError(
-                    f"Expected a list of lists of length 2 or list of tuples of length 2. Received: {message_pair}"
+                    f"Expected a list of lists of length 3 or list of tuples of length 3. Received: {message_pair}"
                 )
             processed_messages.append(
                 [
                     self._preprocess_content(message_pair[0]),
                     self._preprocess_content(message_pair[1]),
+                    self._preprocess_content(message_pair[2])
                 ]
             )
         return processed_messages
