@@ -1,0 +1,9 @@
+services:
+  gradio-builder:
+    image: gradio-builder
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./:/app
+    command: ["./build_gradio"]

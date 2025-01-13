@@ -1,0 +1,11 @@
+#!/bin/bash
+# build frontend
+npm install --global pnpm
+./scripts/build_frontend.sh
+
+# build gradio wheel
+python3 -m build -w -o ./dist
+
+# build gradio_client wheel
+cd client/python
+python3 -m build -w -o ./../../dist
