@@ -12,5 +12,4 @@ pipeline {
                 sh "docker compose -f docker-compose-preview.yml up -d"
             }
         }
-    }
 }
