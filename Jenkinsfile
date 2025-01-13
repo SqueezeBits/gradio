@@ -3,12 +3,12 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh "docker compose -f docker-compose-preview.yml build"
+                sh "docker compose build"
             }
         }
         stage('Deploy') {
             steps {
-                sh "docker compose -f docker-compose-preview.yml run --rm gradio-builder"
+                sh "docker compose run --rm gradio-builder"
             }
         }
     }
