@@ -4,6 +4,4 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    volumes:
-      - ./:/app
-    command: ["./build_gradio"]
+    command: ["/bin/bash", "./build_gradio"]
